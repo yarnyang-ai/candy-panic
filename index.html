@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#161b17">
+  <meta name="description" content="Candy Panic!! A 30-second pixel candy-collecting game.">
+  <title>Candy Panic!!</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/main.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header"><a class="brand" href="./" aria-label="Candy Panic!! home">Candy Panic!!</a></header>
+    <main>
+      <section class="game-frame" aria-label="Candy Panic!! game">
+        <div class="stage" id="stage">
+          <canvas id="game" width="480" height="270" tabindex="0" aria-label="Move with arrow keys or A and D. Press Space, Up, or W to double jump. Press Down or S to drop through a platform."></canvas>
+          <div class="vignette" aria-hidden="true"></div>
+          <div class="start-screen screen" id="start-screen">
+            <div class="start-content">
+              <h1 class="game-title"><span class="sr-only">Candy Panic!!</span><canvas id="title-art" width="210" height="100" aria-hidden="true"></canvas></h1>
+              <p class="game-description">Collect candy in 30 seconds.</p>
+              <div class="start-scores" aria-label="Scoring">
+                <span class="blue"><i></i>Soda <strong>+1</strong></span>
+                <span class="orange"><i></i>Orange <strong>+5</strong></span>
+                <span class="red"><i></i>Strawberry <strong>+10</strong></span>
+                <span class="gray"><i></i>Stone <strong>−10</strong></span>
+              </div>
+              <div class="personal-best"><span>HIGH SCORE</span><strong id="best-score">—</strong><span>pt</span></div>
+              <button class="button button-primary" id="start-button">START <span aria-hidden="true">▶</span></button>
+              <p class="start-hint"><kbd>ENTER</kbd> to start</p>
+              <div class="keyboard-guide"><span><kbd>←</kbd><kbd>→</kbd> / <kbd>A</kbd><kbd>D</kbd> Move</span><span><kbd>SPACE</kbd> Double jump</span><span><kbd>↓</kbd> / <kbd>S</kbd> Drop</span></div>
+            </div>
+          </div>
+          <button class="sound-button" id="sound-button" aria-label="Toggle sound" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path id="sound-wave" d="m12 6 3 4m0-4-3 4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span id="sound-label">SOUND ON</span></button>
+          <div class="hud" id="hud" hidden><div class="hud-score"><span>SCORE</span><strong id="score">0000</strong></div><div class="hud-time"><span>TIME</span><strong id="timer">30<span>.0</span></strong><div class="time-track"><i id="time-progress"></i></div></div><button class="icon-button pause-button" id="pause-button" aria-label="Pause">Ⅱ</button></div>
+          <div class="countdown screen centered" id="countdown-screen" hidden aria-live="assertive"><strong id="countdown-number">3</strong></div>
+          <div class="go-label" id="go-label" hidden>GO!</div>
+          <div class="pause-screen screen centered" id="pause-screen" hidden><h2>PAUSED</h2><button class="button button-primary" id="resume-button">RESUME <span aria-hidden="true">▶</span></button></div>
+          <div class="result-screen screen centered" id="result-screen" hidden aria-labelledby="result-title"><div class="result-panel"><h2 id="result-title">RESULT</h2><p id="result-message" class="result-message" hidden>DON'T TOUCH ME, KITTY!!</p><div class="result-score"><strong id="result-score">0</strong><span>pt</span></div><p class="record-badge" id="record-badge"></p><div class="result-breakdown" id="result-breakdown"></div><div class="result-actions"><button class="button button-primary" id="retry-button">PLAY AGAIN <span aria-hidden="true">↻</span></button><button class="button button-secondary" id="copy-button">COPY RESULT <span aria-hidden="true">⧉</span></button></div><div class="share-links"><button id="x-share-button">Share on X ↗</button><span>·</span><button id="home-button">Title</button></div><p id="share-status" role="status"></p><textarea id="share-fallback" aria-label="Result text to share" readonly hidden></textarea></div></div>
+          <div class="touch-controls" id="touch-controls" aria-label="Touch controls" hidden><div><button data-control="left" aria-label="Move left">←</button><button data-control="right" aria-label="Move right">→</button><button data-control="down" aria-label="Drop through platform">↓</button></div><button data-control="jump" class="touch-jump" aria-label="Jump">JUMP <span>↑</span></button></div>
+        </div>
+      </section>
+    </main>
+    <footer>(C)YarnYang</footer>
+  </div>
+  <noscript>Please enable JavaScript to play.</noscript>
+</body>
+</html>
+
+
+
+

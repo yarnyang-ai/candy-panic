@@ -1,0 +1,42 @@
+name: Deploy Candy Panic to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test game rules
+        run: npm test
+      - uses: actions/configure-pages@v5
+      - name: Prepare game files
+        run: |
+          mkdir -p _site/src _site/assets/characters
+          cp index.html styles.css favicon.svg .nojekyll _site/
+          cp src/*.js _site/src/
+          cp assets/characters/*.png _site/assets/characters/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publish
+        id: deployment
+        uses: actions/deploy-pages@v4
