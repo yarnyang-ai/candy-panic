@@ -33,6 +33,7 @@ jobs:
           mkdir -p _site/src _site/assets/characters
           cp index.html styles.css favicon.svg .nojekyll _site/
           cp src/*.js _site/src/
+          cp assets/og-image.png _site/assets/
           cp assets/characters/*.png _site/assets/characters/
       - uses: actions/upload-pages-artifact@v5
         with:
