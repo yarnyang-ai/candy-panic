@@ -146,7 +146,6 @@ export function createBackground(platforms) {
   broadTree(ctx, 31, 251, 239, '#273e30', ['#2b4432', '#314a35', '#3d5237']);
   broadTree(ctx, 451, 252, 223, '#293f2e', ['#30482f', '#3e5336', '#405735']);
   broadTree(ctx, 122, 250, 201, '#3b5238', ['#3a5137', '#425b3b', '#4c6241']);
-  ctx.fillStyle = '#1c35286b'; ctx.fillRect(0, 0, 189, HEIGHT);
   // Deliberately scattered, sharply cut pixels give the forest its texture.
   for (let i = 0; i < 680; i++) {
     const x = Math.floor(random() * WIDTH), y = Math.floor(random() * FLOOR);
