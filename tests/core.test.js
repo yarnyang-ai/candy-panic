@@ -183,7 +183,7 @@ test('each throw doubles from six to twelve when only ten seconds remain', () =>
   assert.ok(Math.abs(game.remaining - 10) < 0.00001);
   game.candies = [];
   game.update(0.09);
-  assert.equal(game.candies.length, 12);
+  assert.equal(game.candies.length, 24);
 });
 
 test('a large update crossing the ten-second boundary doubles only later throws', () => {
@@ -191,7 +191,7 @@ test('a large update crossing the ten-second boundary doubles only later throws'
   game.update(19.9);
   game.candies = [];
   game.update(0.3);
-  assert.equal(game.candies.length, 30); // One 6-item throw, then two 12-item throws.
+  assert.equal(game.candies.length, 60); // One normal burst, then two bursts after the late-round increase.
 });
 
 test('stone uses half its former probability, 11 out of 200 uniform draws', () => {
@@ -263,7 +263,7 @@ test('new candy originates from the boy after he relocates', () => {
   const game = new Game(() => 0.5, () => 0); game.start(); game.update(3); game.update(5.8);
   game.candies = []; game.spawnClock = 0;
   game.update(1 / 60);
-  assert.equal(game.candies.length, 6);
+  assert.equal(game.candies.length, 12);
   for (const candy of game.candies) {
     assert.ok(Math.abs(candy.x - game.boy.x - 8) < 1);
     assert.ok(candy.x > 356);
